@@ -1,0 +1,26 @@
+name: Update Vercel Routes
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-routes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Update Vercel Routes
+        run: |
+          # Ajout des nouvelles routes au fichier vercel.json
+          jq '.routes += [{"src": "/performances","dest": "/galerie","status": 301}, {"src": "/works","dest": "/galerie","status": 301}, {"src": "/biography","dest": "/galerie","status": 301}, {"src": "/contacts","dest": "/galerie","status": 301}]' vercel.json > temp.json && mv temp.json vercel.json
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name 'Your Name'
+          git config --global user.email 'your-email@example.com'
+          git add vercel.json
+          git commit -m "Update Vercel routes" || true
+          git push origin main || true
