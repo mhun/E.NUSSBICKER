@@ -3,7 +3,7 @@ name: Update Vercel Routes
 on:
   push:
     branches:
-      - main
+      - prod
 
 jobs:
   update-routes:
