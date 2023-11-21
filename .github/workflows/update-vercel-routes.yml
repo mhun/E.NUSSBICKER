@@ -19,8 +19,8 @@ jobs:
 
       - name: Commit and Push Changes
         run: |
-          git config --global user.name 'Your Name'
-          git config --global user.email 'your-email@example.com'
+          git config --global user.name 'mhun'
+          git config --global user.email 'acte13@gmail.com'
           git add vercel.json
           git commit -m "Update Vercel routes" || true
           git push origin main || true
